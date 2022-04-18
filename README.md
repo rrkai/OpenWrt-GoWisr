@@ -14,7 +14,7 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 Lean源码版本，内核为***5.10***版
 
-自动每15天更新一次，手动不定时更新
+自动每月1号更新一次，手动不定时更新.
 
 > `ip：192.168.1.1 密码：password`
 
