@@ -36,7 +36,7 @@ Lean源码版本，内核为***5.10***版
 
 ## 固件截图：
 ### Suse 自用版
-![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/suse.jpg)
+![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/suse.png)
 
 ### Plus 加强版
 ![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/plus.png)
