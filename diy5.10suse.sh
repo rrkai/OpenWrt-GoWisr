@@ -27,7 +27,6 @@ sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Make
 # git clone -b luci https://github.com/xiaorouji/openwrt-passwall package/passwall
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 git clone https://github.com/TorBoxCode/luci-app-eqos.git package/luci-app-eqos
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
 git clone https://github.com/fw876/helloworld.git package/ssr
