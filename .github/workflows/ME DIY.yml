@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-5.15ME
+name: OpenWrt-ME
 
 on:
   repository_dispatch:
@@ -172,7 +172,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 OpenWrt5.15ME自用-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 OpenWrt ME自用-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
