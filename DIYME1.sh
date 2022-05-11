@@ -8,7 +8,8 @@
 # Blog: https://p3terx.com
 #=============================================================
 
-sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Makefile
 
 # Uncomment a feed source
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
@@ -24,6 +25,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 svn co https://github.com/linkease/istore/trunk/luci/luci-app-store package/luci-app-store
 sed -i 's/luci-lib-ipkg/luci-base/g' package/luci-app-store/Makefile
 svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
