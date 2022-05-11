@@ -28,7 +28,6 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 # git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
-git clone https://github.com/firker/diy-ziyong.git package/diy-ziyong
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/TorBoxCode/luci-app-eqos.git package/luci-app-eqos
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
