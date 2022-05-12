@@ -21,6 +21,7 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-GO'/g" ./package/base-files/files
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # sed -i '60s/ITdesk01/firkerword/' ./package/jd_openwrt_script/files/jd_openwrt_script
+sed-i's/"Turbo ACC网络加速"/“网络加速"/g'openwrt/package/lean/luci-app-turboacc/po/zh-cn/sfe.po
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/adguardhome
 rm -rf ./feeds/packages/net/smartdns
