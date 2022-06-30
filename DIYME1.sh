@@ -31,7 +31,6 @@ git clone https://github.com/fw876/helloworld.git package/ssr
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/TorBoxCode/luci-app-eqos.git package/luci-app-eqos
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
-git clone https://github.com/AutoCONFIG/luci-app-turboacc.git package/luci-app-turboacc
 # git clone https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
 # git clone -b luci https://github.com/xiaorouji/openwrt-passwall package/passwall
 # git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
