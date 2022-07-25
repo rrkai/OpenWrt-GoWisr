@@ -21,7 +21,6 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-GO'/g" ./package/base-files/files
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # sed -i '60s/ITdesk01/firkerword/' ./package/jd_openwrt_script/files/jd_openwrt_script
-rm -rf feeds/luci/applications/luci-app-turboacc
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/adguardhome
 rm -rf ./feeds/packages/net/smartdns
