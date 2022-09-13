@@ -5,9 +5,7 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #=================================================
-
 name: OpenWrt-DIYME
-
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -18,7 +16,6 @@ on:
         default: 'false'
 #  schedule:
 #    - cron: 0 12 */31 * *
-
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
@@ -32,15 +29,12 @@ env:
   UPLOAD_WETRANSFER: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-
 jobs:
   build:
     runs-on: ubuntu-20.04
-
     steps:
     - name: 检查项目分支
       uses: actions/checkout@main
-
     - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -67,10 +61,8 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
     - name: 下载插件
       run: cd openwrt && ./scripts/feeds update -a
-
     - name: 读取插件
       run: cd openwrt && ./scripts/feeds install -a
-
     - name: 更改设置
       run: |
         [ -e files ] && mv files openwrt/files
@@ -84,7 +76,6 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
     - name: 下载安装包
       id: package
       run: |
@@ -107,14 +98,12 @@ jobs:
     - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
-
     - name: 上传bin压缩目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin/packages/x86_64
-
     - name: 整理编译好的固件
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -138,17 +127,12 @@ jobs:
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
-
-      - name: 删除旧的Releases
-        uses: dev-drprasad/delete-older-releases@v0.1.0
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-        with:
-          keep_latest: 9
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-              
-              WeTransfer：${{ steps.wetransfer.outputs.url }}
-              
-              
-              Have a nice day.
+    - name: 删除旧的Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 9
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        WeTransfer：${{ steps.wetransfer.outputs.url }}
