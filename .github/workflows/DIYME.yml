@@ -145,8 +145,8 @@ jobs:
 #        with:
 #          keep_latest: 9
 #          delete_tags: true
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
               
               WeTransfer：${{ steps.wetransfer.outputs.url }}
               
