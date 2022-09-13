@@ -139,12 +139,12 @@ jobs:
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
 
-#      - name: 删除旧的Releases
-#        uses: dev-drprasad/delete-older-releases@v0.1.0
-#        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-#        with:
-#          keep_latest: 9
-#          delete_tags: true
+      - name: 删除旧的Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        with:
+          keep_latest: 9
+          delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
               
