@@ -12,6 +12,7 @@ sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makef
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.18/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.19/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=6.0/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makefile
 
 # Uncomment a feed source
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
