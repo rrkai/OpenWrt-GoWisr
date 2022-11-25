@@ -44,3 +44,4 @@ git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-ap
 # git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 # git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/luci-app-UUGameAcc
 # git clone https://github.com/yichya/luci-app-xray.git package/luci-app-xray
+git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
