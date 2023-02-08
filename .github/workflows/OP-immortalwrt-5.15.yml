@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-Lienol-5.4
+name: OP-immortalwrt-5.15
 
 on:
   repository_dispatch:
