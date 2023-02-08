@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-DIYME
+name: OP-LEDE-5.15
 
 on:
   repository_dispatch:
@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: e5bf907be5d57e63ef58faa890854b4d908415d5
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: DIYME.config
   DIY_P1_SH: DIYME1.sh
