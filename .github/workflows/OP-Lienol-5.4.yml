@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-DIYME
+name: OP-Lienol-5.4
 
 on:
   repository_dispatch:
