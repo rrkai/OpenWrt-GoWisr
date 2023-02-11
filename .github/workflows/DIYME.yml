@@ -20,7 +20,7 @@ on:
     - cron: 0 12 */31 * *
 
 env:
-  REPO_URL: https://github.com/rrkai/op-lede
+  REPO_URL: https://github.com/rrkai/lede
   REPO_BRANCH: huigun
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: DIYME.config
