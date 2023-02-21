@@ -21,7 +21,7 @@ on:
 
 env:
   REPO_URL: https://github.com/rrkai/lede
-  REPO_BRANCH: huigun
+  REPO_BRANCH: huigun79
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ALLOPv4.config
   DIY_P1_SH: DIYME1.sh
