@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-LEDEv4n-5.15
+name: OP-LEDEv4-5.15
 
 on:
   repository_dispatch:
