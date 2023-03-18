@@ -20,7 +20,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 rm -rf ./package/diy-ziyong/theme
 rm -rf ./package/diy-ziyong/luci-app-wrtbwmon-zh
 rm -rf ./package/diy-ziyong/wrtbwmon
-rm -rf ./package/diy-ziyong/adguardhome
+# rm -rf ./package/diy-ziyong/adguardhome
 rm -rf ./feeds/packages/net/adguardhome
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/packages/net/mosdns
@@ -28,4 +28,4 @@ rm -rf ./feeds/luci/applications/luci-app-passwall
 rm -rf ./feeds/luci/applications/luci-app-ssr-plus
 rm -rf ./feeds/luci/applications/luci-app-openclash
 rm -rf ./feeds/luci/applications/luci-app-smartdns
-rm -rf ./feeds/luci/applications/luci-app-adbyby-plus
+# rm -rf ./feeds/luci/applications/luci-app-adbyby-plus
