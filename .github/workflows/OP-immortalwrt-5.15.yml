@@ -23,9 +23,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: OP-immw.config
-  DIY_P1_SH: OP-immw1.sh
-  DIY_P2_SH: OP-immw2.sh
+  CONFIG_FILE: OPimmw.config
+  DIY_P1_SH: OPimmw1.sh
+  DIY_P2_SH: OPimmw2.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
