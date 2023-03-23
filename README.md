@@ -19,28 +19,3 @@ Lean源码版本，内核为***5.10***版
 > `ip：192.168.1.1 密码：password`
 
 ## 固件版本：
-
-### Suse版本为自用版本
-
-版本特点:插件只保留几种必需,可做为主路由长期稳定使用,适合小硬盘主机,
-
-IMG包体积小于***256MB***,软件包空闲空间大于等于***64MB***
-
-### Plus版本为加强版本
-
-版本特点:暂时未推出
-
-安装包体积小于***650MB***,软件包空闲空间大于等于***256MB***
-
-### 具体插件列表可见下方的固件截图(全版本均支持IPv6)
-
-## 固件下载
-### 点击[Releases](https://github.com/rrkai/OpenWrt-Liao/releases) 选择需要的版本
-![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/down.png)
-
-## 固件截图：
-### Suse 自用版
-![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/suse.png)
-
-### Plus 加强版
-![avatar](https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/PNG/plus.png)
