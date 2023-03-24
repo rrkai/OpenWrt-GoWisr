@@ -23,7 +23,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: OP515v6.config
+  CONFIG_FILE: OP-5.15/OP515v6.config
   DIY_P1_SH: OP515a.sh
   DIY_P2_SH: OP515b.sh
   UPLOAD_BIN_DIR: true
