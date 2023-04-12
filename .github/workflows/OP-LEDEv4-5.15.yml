@@ -139,6 +139,12 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
+    - name: 上传固件到github
+      uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      with:
+        name: OpenWrt_6.0${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
         
     - name: 上传固件到WT网盘
       id: wetransfer
@@ -148,10 +154,38 @@ jobs:
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-
+        
+ - name: 创建release标签
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
+        touch release.txt
+        echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
+        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "status=success" >> $GITHUB_OUTPUT
+    - name: 发布至release
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-              
-              WeTransfer：${{ steps.wetransfer.outputs.url }}
-              
-              Have a nice day.
+      with:
+        name: ${{ env.FILE_TIME }} 「 OP-LEDEv4-5.15-X86-64 」
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
+        
+    - name: 清理旧的workflow
+      uses: FunctionXJB/delete-workflow-runs@main
+      with:
+        retain_days: 60
+        keep_minimum_runs: 10
+
+    - name: 删除旧的Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 6
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
