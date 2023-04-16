@@ -179,9 +179,9 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "功能介绍：自用稳定版带IPV6" >> release.txt
-        echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
-        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "功能介绍：自用稳定版带IPV6,Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,EQOS网速控制,带宽监控,文件助手,TTYD" >> release.txt
+        echo "默认ip：192.168.1.1 密码：password >> release.txt
+        echo "编译源码为LEDE的5.15最新版.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
     - name: 发布至release
       uses: softprops/action-gh-release@v1
