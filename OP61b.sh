@@ -22,7 +22,6 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-GO'/g" ./package/base-files/files
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # sed -i '60s/ITdesk01/firkerword/' ./package/jd_openwrt_script/files/jd_openwrt_script
 rm -rf ./package/lean/luci-theme-argon
-rm -rf ./feeds/packages/net/adguardhome
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./package/lean/luci-app-qbittorrent
 rm -rf ./target/linux/generic/pending-5.10/701-net-ethernet-mtk_eth_soc-add-ipv6-flow-offloading-support.patch
