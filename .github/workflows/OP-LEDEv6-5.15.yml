@@ -179,7 +179,7 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "功能介绍：自用稳定版带IPV6,Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,EQOS网速控制,带宽监控,文件助手,TTYD" >> release.txt
+        echo "功能介绍：自用稳定版带IPV6,Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,EQOS网速控制,带宽监控,文件助手,TTYD,AdguardHome" >> release.txt
         echo "默认ip：192.168.1.1 密码：password 固件解压后大小控制在800M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件" >> release.txt
         echo "编译源码为LEDE的5.15最新版.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
