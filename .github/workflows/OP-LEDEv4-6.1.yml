@@ -20,7 +20,7 @@ on:
 #    - cron: 0 12 */31 * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/rrkai/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: kernel6.1/v4.config
