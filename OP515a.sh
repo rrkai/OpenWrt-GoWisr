@@ -19,8 +19,8 @@ sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makef
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
-git clone https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
-git clone https://github.com/fw876/helloworld.git package/ssr
+git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/TorBoxCode/luci-app-eqos.git package/luci-app-eqos
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
