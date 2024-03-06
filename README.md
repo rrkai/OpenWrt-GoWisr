@@ -10,9 +10,11 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 ## 固件说明：
 功能介绍：自用稳定版  分为带ipv6和不带ipv6版本,其他的均一样.
-2024年1月1日开始只编译ipv6版本,不需要的可以单独卸载掉(最新的docker必须依赖IPV6,如果卸载了会同步卸载docker)
+
+注意!:2024年1月1日开始只编译ipv6版本,不需要的可以单独卸载掉(最新的docker必须依赖IPV6,如果卸载了会同步卸载docker)
 
 编译源码为LEDE的5.10和6.6内核最新版,5.10和6.6内核都为超长期稳定（SLTS）内核.
+
 由衷感谢所有为openwrt无私奉献的大佬们
 
 自带插件列为:Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,NFT-QOS网速控制,带宽监控,TTYD,定时重启
