@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-LEDEv6-5.15
+name: OP-LEDEv6-5.10
 
 on:
   repository_dispatch:
@@ -23,9 +23,9 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: kernel5.15/v6.config
-  DIY_P1_SH: OP515a.sh
-  DIY_P2_SH: OP515b.sh
+  CONFIG_FILE: kernel5.10/v6.config
+  DIY_P1_SH: OP510a.sh
+  DIY_P2_SH: OP510b.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
@@ -181,7 +181,7 @@ jobs:
         touch release.txt
         echo "功能介绍：自用稳定版带IPV6,带Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,NFT-QOS网速控制,带宽监控,TTYD,定时重启" >> release.txt
         echo "默认ip：192.168.1.1 密码：password 固件解压后大小控制在800M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件" >> release.txt
-        echo "编译源码为LEDE的5.15最新版.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "编译源码为LEDE的5.10最新版.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
     - name: 发布至release
       uses: softprops/action-gh-release@v1
@@ -189,7 +189,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-5.15-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-5.10-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
