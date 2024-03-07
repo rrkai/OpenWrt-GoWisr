@@ -39,51 +39,79 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: 检查项目分支
-      uses: actions/checkout@main
+    - name: 检查磁盘空间
+      run: |
+        echo "Before freeing up disk space"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
 
-    - name: 清理磁盘空间
-      uses: jlumbroso/free-disk-space@main
+    - name: "优化磁盘空间"
+      uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.0"
       with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: false
+        operate_sudo: "True"
+        general_include: ".+"
+        general_exclude: |-
+          ^GCC$
+          ^G\+\+$
+          Clang
+          LLVM
+        docker_include: ".+"
+        docker_prune: "True"
+        docker_clean: "True"
+        apt_prune: "True"
+        apt_clean: "True"
+        homebrew_prune: "True"
+        homebrew_clean: "True"
+        npm_prune: "True"
+        npm_clean: "True"
+        os_swap: "True"
 
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        docker-images: true
-        swap-storage: true
+    - name: 释放磁盘空间
+      uses: easimon/maximize-build-space@master
+      with: 
+        root-reserve-mb: 2048
+        swap-size-mb: 1
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+        remove-docker-images: 'true'
+
+    - name: 磁盘空间释放完成
+      run: |
+        echo "Free up disk space complete"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
+
+    - name: 磁盘优化结束
+      uses: actions/checkout@main
         
     - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        df -hT
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
-        sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/rrkai/OpenWrt-Liao/main/ubuntu-2004)
+        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+        bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+        git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
+        libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
+        mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
+        libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
+        vim wget xmlto xxd zlib1g-dev python3-setuptools
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
+        /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
-        df -hT
+        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
+        
     - name: 下载固件源码
-      working-directory: /workdir
+      working-directory: ./
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        cd openwrt
-        useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
-        echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
-        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV   
+        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
+        
     - name: 加载自定义设置
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -103,12 +131,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-    - name: SSH链接管理
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 下载安装包
       id: package
@@ -162,23 +184,6 @@ jobs:
       with:
         name: OpenWrt-5.15${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
-
-#    - name: 上传固件到NN网盘
-#      id: cowtransfer
-#      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-#      run: |
-#        curl -fsSL git.io/file-transfer | sh
-#        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-#        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-#        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-#    - name: 上传固件到WT网盘
-#      id: wetransfer
-#      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
-#      run: |
-#        curl -fsSL git.io/file-transfer | sh
-#        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
-#        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-#        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
         
     - name: 创建release标签
       id: tag
@@ -190,13 +195,14 @@ jobs:
         echo "默认ip：192.168.1.1 密码：password 固件解压后大小控制在800M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件" >> release.txt
         echo "编译源码为LEDE的5.10最新版.5.10内核都为超长期稳定（SLTS）内核.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
+        
     - name: 发布至release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-5.10-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-6.1-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
@@ -207,11 +213,5 @@ jobs:
         retain_days: 60
         keep_minimum_runs: 10
 
-#       - name: 删除旧的Releases
-#         uses: dev-drprasad/delete-older-releases@v0.1.0
-#         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-#        with:
-#           keep_latest: 6
-#           delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
