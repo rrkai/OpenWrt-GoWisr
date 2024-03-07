@@ -39,14 +39,14 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Before freeing up disk space
+    - name: 检查磁盘空间
       run: |
         echo "Before freeing up disk space"
         echo "=============================================================================="
         df -hT
         echo "=============================================================================="
 
-    - name: "Optimize Disk Space"
+    - name: "优化磁盘空间"
       uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.0"
       with:
         operate_sudo: "True"
@@ -67,7 +67,7 @@ jobs:
         npm_clean: "True"
         os_swap: "True"
 
-    - name: Freeing up disk space
+    - name: 释放磁盘空间
       uses: easimon/maximize-build-space@master
       with: 
         root-reserve-mb: 2048
@@ -78,14 +78,14 @@ jobs:
         remove-codeql: 'true'
         remove-docker-images: 'true'
 
-    - name: Free up disk space complete
+    - name: 磁盘空间释放完成
       run: |
         echo "Free up disk space complete"
         echo "=============================================================================="
         df -hT
         echo "=============================================================================="
 
-    - name: Checkout
+    - name: 磁盘优化结束
       uses: actions/checkout@main
         
     - name: 安装编译环境
