@@ -23,7 +23,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: kernel5.10/v6.config
+  CONFIG_FILE: X86-64-IPv6.config
   DIY_P1_SH: OP510a.sh
   DIY_P2_SH: OP510b.sh
   SSH_ACTIONS: false
