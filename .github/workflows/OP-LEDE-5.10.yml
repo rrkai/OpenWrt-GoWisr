@@ -202,7 +202,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-6.1-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-5.10-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
