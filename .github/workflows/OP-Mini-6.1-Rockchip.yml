@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-LEDEv4-6.1
+name: OP-Mini-6.1-Rockchip
 
 on:
   repository_dispatch:
