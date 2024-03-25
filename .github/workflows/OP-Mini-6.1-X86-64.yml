@@ -23,7 +23,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: Mini/X86-64.config
   DIY_P1_SH: OP61a.sh
-  DIY_P2_SH: OP61b.sh
+  DIY_P2_SH: DIY2.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
