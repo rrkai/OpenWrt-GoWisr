@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-LEDEv6-6.1
+name: OP-Plus-6.1-X86-64
 
 on:
   repository_dispatch:
@@ -21,14 +21,12 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: X86-64-IPv6.config
+  CONFIG_FILE: Mini/X86-64.config
   DIY_P1_SH: OP61a.sh
   DIY_P2_SH: DIY2.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
@@ -189,9 +187,17 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "功能介绍：带IPV6,带Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,NFT-QOS网速控制,带宽监控,TTYD,定时重启" >> release.txt
-        echo "默认ip：192.168.1.1 密码：password 固件解压后大小控制在800M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件" >> release.txt
-        echo "编译源码为LEDE的6.1最新版.6.1内核都为超长期稳定（SLTS）内核.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "📒 固件信息" >> release.txt
+        echo "- 💻 平台架构: x86-64" >> release.txt
+        echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
+        echo "- 💝 源码分支: master" >> release.txt
+        echo "- 🚀 内核版本: 6.1 (SLTS超长期稳定内核)" >> release.txt
+        echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
+        echo "- 🔑 默认密码: password" >> release.txt
+        echo "- 🍻 分区大小:512(同分区大小可直接升级)" >> release.txt
+        echo "🧊 插件信息" >> release.txt
+        echo "- 不包含:TTYD" >> release.txt
+        echo "- 包含:IPV6,Docker,HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),NFT-QOS网速控制,带宽监控,定时重启,文件传输" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 发布至release
@@ -200,7 +206,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 OP-LEDEv6-6.1-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 OP-Plus-6.1-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
