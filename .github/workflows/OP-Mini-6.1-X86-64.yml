@@ -189,9 +189,17 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "功能介绍：不带IPV6,不带Docker,带HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速,NFT-QOS网速控制,带宽监控,TTYD,定时重启" >> release.txt
-        echo "默认ip：192.168.1.1 密码：password 固件解压后大小控制在800M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件" >> release.txt
-        echo "编译源码为LEDE的6.1最新版.6.1内核都为超长期稳定（SLTS）内核.由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "📒 固件信息" >> release.txt
+        echo "- 💻 平台架构: x86-64" >> release.txt
+        echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
+        echo "- 💝 源码分支: master" >> release.txt
+        echo "- 🚀 内核版本: 6.1 (SLTS超长期稳定内核)" >> release.txt
+        echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
+        echo "- 🔑 默认密码: password" >> release.txt
+        echo "- 🍻 分区大小:512(同分区大小可直接升级)" >> release.txt
+        echo "🧊 插件信息" >> release.txt
+        echo "- 不包含:IPV6,Docker,TTYD" >> release.txt
+        echo "- 包含:HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),NFT-QOS网速控制,带宽监控,定时重启" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 发布至release
