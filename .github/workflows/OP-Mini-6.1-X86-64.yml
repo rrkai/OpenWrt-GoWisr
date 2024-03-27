@@ -195,6 +195,7 @@ jobs:
         echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小:512(同分区大小可直接升级)" >> release.txt
+        echo " " >> release.txt
         echo "🧊 插件信息" >> release.txt
         echo "- 不包含:IPV6,Docker,TTYD" >> release.txt
         echo "- 包含:HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),NFT-QOS网速控制,带宽监控,定时重启,文件传输" >> release.txt
