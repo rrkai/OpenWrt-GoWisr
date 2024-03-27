@@ -187,7 +187,7 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "📒固件信息🐤" >> release.txt
+        echo "📒 固件信息 🐤" >> release.txt
         echo "- 💻 平台架构: x86-64" >> release.txt
         echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
         echo "- 💝 源码分支: master" >> release.txt
