@@ -13,7 +13,7 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 注意!:2024年1月1日开始只编译ipv6版本,不需要的可以单独卸载掉(最新的docker必须依赖IPV6,如果卸载了会同步卸载docker)
 
-编译源码为LEDE的5.10和6.6内核最新版,5.10和6.6内核都为超长期稳定（SLTS）内核.
+编译源码为LEDE的5.10和6.1内核最新版,5.10和6.1内核都为超长期稳定（SLTS）内核.
 
 由衷感谢所有为openwrt无私奉献的大佬们
 
