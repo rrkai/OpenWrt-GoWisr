@@ -23,6 +23,7 @@ git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+git clone https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 # mv -vf ../mt7621_phicomm_k2p.dts ./target/linux/ramips/dts/mt7621_phicomm_k2p.dts
