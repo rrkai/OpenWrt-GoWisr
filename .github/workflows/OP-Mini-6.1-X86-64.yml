@@ -16,8 +16,8 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'   
-  schedule:
-    - cron: 0 04 */31 * *
+#  schedule:
+#    - cron: 0 04 */31 * *
         
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -199,7 +199,7 @@ jobs:
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小:512(同分区大小可直接升级)" >> release.txt
         echo "- 💢去除:IPV6,Docker,TTYD" >> release.txt
-        echo "- 🈶包含:HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),NFT-QOS网速控制,带宽监控,定时重启,文件传输" >> release.txt
+        echo "- 🈶包含:HelloWorld,ShadowSocksR++,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),EQOS网速控制,带宽监控,定时重启,文件传输" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 发布至release
