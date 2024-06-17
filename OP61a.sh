@@ -8,8 +8,8 @@
 # Blog: https://p3terx.com
 #=============================================================
 
-sed -i "s/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.1/g" lede/target/linux/x86/Makefile
-sed -i "s/KERNEL_TESTING_PATCHVER:=*.*/KERNEL_TESTING_PATCHVER:=6.1/g" lede/target/linux/x86/Makefile
+sed -i "s/KERNEL_PATCHVER:=*.*/KERNEL_PATCHVER:=6.6/g" lede/target/linux/x86/Makefile
+sed -i "s/KERNEL_TESTING_PATCHVER:=*.*/KERNEL_TESTING_PATCHVER:=6.6/g" lede/target/linux/x86/Makefile
 
 # Uncomment a feed source
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
