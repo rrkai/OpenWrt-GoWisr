@@ -197,7 +197,7 @@ jobs:
         echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小: 456MB(同分区大小可直接升级)" >> release.txt
-        echo "- 💢去除:TTYD" >> release.txt
+        echo "- 💢去除:无" >> release.txt
         echo "- 🈶包含:IPV6,Docker,HelloWorld,ShadowSocksR++,Passwall2,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),EQOS网速控制,带宽监控,定时重启,文件传输,磁盘管理" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
