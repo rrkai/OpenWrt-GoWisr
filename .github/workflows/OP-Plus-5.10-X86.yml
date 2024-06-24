@@ -189,7 +189,7 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "📒 固件信息 🦅" >> release.txt
+        echo "📒 固件信息 🦖" >> release.txt
         echo "- 💻 平台架构: x86-64" >> release.txt
         echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
         echo "- 💝 源码分支: master" >> release.txt
@@ -197,8 +197,7 @@ jobs:
         echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小: 456MB(同分区大小可直接升级)" >> release.txt
-        echo "- 💢去除:无" >> release.txt
-        echo "- 🈶包含:IPV6,Docker,HelloWorld,ShadowSocksR++,Passwall2,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),EQOS网速控制,带宽监控,定时重启,文件传输,磁盘管理" >> release.txt
+        echo "- 🈶包含:ttyt,IPV6,Docker,HelloWorld,ShadowSocksR++,Passwall2,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(SFE和FLOW都有),EQOS网速控制,带宽监控,定时重启,文件传输,磁盘管理" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 发布至release
@@ -207,7 +206,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 🦅OP-Plus-5.10-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 🦖OP-Plus-5.10-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
