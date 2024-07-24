@@ -193,7 +193,7 @@ jobs:
         echo "- 💻 平台架构: x86-64" >> release.txt
         echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
         echo "- 💝 源码分支: master" >> release.txt
-        echo "- 🚀 内核版本: 6.6 (LTS超长期稳定内核)" >> release.txt
+        echo "- 🚀 内核版本: 6.6 (LTS长期稳定内核)" >> release.txt
         echo "- 🌐 默认地址: 192.168.1.1" >> release.txt
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小: 456MB(同分区大小可直接升级)" >> release.txt
