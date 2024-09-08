@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-Mini-6.6-X86-64
+name: OP-6.6-Mini
 
 on:
   repository_dispatch:
