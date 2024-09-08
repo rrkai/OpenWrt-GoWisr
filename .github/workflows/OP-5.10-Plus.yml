@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OP-Plus-5.10-X86
+name: OP-5.10-Plus
 
 on:
   repository_dispatch:
