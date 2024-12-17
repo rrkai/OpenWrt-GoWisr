@@ -21,7 +21,8 @@ sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.1/g' ./target/linux/x86/Makefi
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+# git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/rrkai/luci-app-eqosplus package/luci-app-eqosplus
@@ -35,7 +36,6 @@ git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 # git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 # git clone -b luci https://github.com/xiaorouji/openwrt-passwall package/passwall
-# git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
 # git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 # git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 # git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
