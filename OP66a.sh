@@ -9,8 +9,9 @@
 #=============================================================
 
 sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=6.12/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
-sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 sed -i '/openwrt-23.05/d' feeds.conf.default
 sed -i 's/^#\(.*luci\)/\1/' feeds.conf.default
 # sed -i '2i src-git luci https://github.com/coolsnowwolf/luci.git' feeds.conf.default
@@ -33,7 +34,6 @@ rm -rf package/custom; mkdir package/custom
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
-git clone https://github.com/linkease/istore.git package/luci-app-store
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
