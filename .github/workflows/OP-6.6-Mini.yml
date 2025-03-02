@@ -20,7 +20,7 @@ on:
 #    - cron: 0 04 */31 * *
         
 env:
-  REPO_URL: https://github.com/rrkai/lede
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: Mini/X86-64.config
