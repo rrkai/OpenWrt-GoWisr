@@ -42,6 +42,9 @@ git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-ap
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/rrkai/luci-app-eqosplus package/luci-app-eqosplus
 git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 # mv -vf ../mt7621_phicomm_k2p.dts ./target/linux/ramips/dts/mt7621_phicomm_k2p.dts
 # svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
