@@ -192,7 +192,7 @@ jobs:
         echo "- 🌐 默认地址: 192.168.1.1  (默认Argon主题)" >> release.txt
         echo "- 🔑 默认密码: password" >> release.txt
         echo "- 🍻 分区大小: 456MB(同分区大小可直接升级)" >> release.txt
-        echo "- 💢 去除:IPV6,Docker" >> release.txt
+        echo "- 💢 去除:IPV6(彻底删除需安装后删除kmod-ip6tables),Docker" >> release.txt
         echo "- 🈶 包含:TTYD,HelloWorld,Passwall,OpenClash,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(FLOW),EQOS网速控制,带宽监控,定时重启,文件传输,磁盘管理" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
