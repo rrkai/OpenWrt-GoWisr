@@ -10,19 +10,20 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 ## 固件说明：
 功能介绍：自用稳定版  分为带ipv6和不带ipv6版本,其他的均一样.
+
 ~~注意!:2024年1月1日开始只编译ipv6版本,不需要的可以单独卸载掉(最新的docker必须依赖IPV6,如果卸载了会同步卸载docker)~~
 
 编译源码为LEDE的6.6和6.1内核最新版,6.6和6.1内核都为超长期稳定（LTS）内核.
 
 **2025.03.17更新记录**
-去除5.10内核,后续应该不会增加.
-增加6.6内核,以后主要为6.1和6.6内核两个版本.
-去除SSR PLUS+,经过测试,跟固件有莫名其妙的规则冲突,无法解决,彻底去除.
-增加passwall,OpenClash,多2个选择.易用程度vssr＞passwall＞OpenClash.
-重新恢复mini版本,特点是彻底去除ipv6,缺点是docker也没办法用.
-ACC网络加速只保留Flow,经过测试,在X86机器上.Flow性能和BUG远低于SFE.
+1. 去除5.10内核,后续应该不会增加.
+2. 增加6.6内核,以后主要为6.1和6.6内核两个版本.
+3. 去除SSR PLUS+,经过测试,跟固件有莫名其妙的规则冲突,无法解决,彻底去除.
+4. 增加passwall,OpenClash,多2个选择.易用程度vssr＞passwall＞OpenClash.
+5. 重新恢复mini版本,特点是彻底去除ipv6,缺点是docker也没办法用.
+6. ACC网络加速只保留Flow,经过测试,在X86机器上.Flow性能和BUG远低于SFE.
 
-由衷感谢所有为openwrt无私奉献的大佬们
+**由衷感谢所有为openwrt无私奉献的大佬们**
 
 **自带插件列表可以在[releases](https://github.com/rrkai/OpenWrt-Liao/releases)查看.**
 
