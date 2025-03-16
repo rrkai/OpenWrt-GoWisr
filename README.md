@@ -24,7 +24,7 @@ ACC网络加速只保留Flow,经过测试,在X86机器上.Flow性能和BUG远低
 
 由衷感谢所有为openwrt无私奉献的大佬们
 
-自带插件列表可以在[Releases](Releases)查看.
+**自带插件列表可以在[releases](https://github.com/rrkai/OpenWrt-Liao/releases)查看.**
 
 固件解压后大小控制在500M内,方便小硬盘安装,软件包剩余空间大于200M,方便自己安装插件.
 
