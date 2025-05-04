@@ -208,7 +208,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 🐤OP-Mini-6.6-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 🐤OP-6.6-DIY-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
