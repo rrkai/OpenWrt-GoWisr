@@ -122,20 +122,22 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        
-# 注意：下面这个步骤的缩进，- name: 前面应该是 4 个空格
-- name: 重新安装 LuCI 相关包
-  run: |
-    cd openwrt
-    # 尝试安装 luci-base 和其他可能包含构建工具的包
-    ./scripts/feeds install -a -p luci
-    # 确保所有包都已安装
-    ./scripts/feeds install -a
-    # 检查 po2lmo 是否可用 (在 host 编译环境中)
-    which po2lmo || echo "WARNING: po2lmo not found in PATH"
-    ls -la staging_dir/host/bin/po2lmo* || echo "INFO: No po2lmo in host staging dir yet"
 
-    # 添加验证步骤，注意缩进与 'steps' 对齐
+    # --- 修复后的步骤：重新安装 LuCI 相关包 ---
+    # 注意：这个步骤现在正确地缩进，与其它 - name: 对齐
+    - name: 重新安装 LuCI 相关包
+      run: |
+        cd openwrt
+        # 尝试安装 luci-base 和其他可能包含构建工具的包
+        ./scripts/feeds install -a -p luci
+        # 确保所有包都已安装
+        ./scripts/feeds install -a
+        # 检查 po2lmo 是否可用 (在 host 编译环境中)
+        which po2lmo || echo "WARNING: po2lmo not found in PATH"
+        ls -la staging_dir/host/bin/po2lmo* || echo "INFO: No po2lmo in host staging dir yet"
+
+    # --- 修复后的步骤：验证配置文件 ---
+    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
     - name: 验证配置文件
       run: |
         cd openwrt
@@ -143,6 +145,8 @@ jobs:
         cat .config | grep CONFIG_TARGET
         echo "=== 配置文件检查完成 ==="
         
+    # --- 修复后的步骤：检查目标配置是否正确 ---
+    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
     - name: 检查目标配置是否正确
       run: |
         cd openwrt
@@ -155,6 +159,8 @@ jobs:
           exit 1
         fi
 
+    # --- 修复后的步骤：下载安装包 ---
+    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
     - name: 下载安装包
       id: package
       run: |
@@ -163,7 +169,8 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    
+        
+    # --- 后续步骤保持缩进正确 ---
     - name: 开始编译固件
       id: compile
       run: |
@@ -176,6 +183,7 @@ jobs:
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "FILE_TIME=$(date "+%m月%d日-%H点")" >> $GITHUB_ENV
         echo "TAG_TIME=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+
     - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
@@ -202,6 +210,7 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
+        
     - name: 上传固件到github
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
