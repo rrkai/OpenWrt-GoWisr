@@ -139,6 +139,26 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+        - name: 验证配置文件
+  run: |
+    cd openwrt
+    echo "=== 当前配置文件内容 ==="
+    cat .config | grep CONFIG_TARGET
+    echo "=== 配置文件检查完成 ==="
+    
+- name: 检查目标配置是否正确
+  run: |
+    cd openwrt
+    if grep -q "CONFIG_TARGET_x86_64=y" .config && grep -q "CONFIG_TARGET_x86_64_DEVICE_generic=y" .config; then
+      echo "✅ 配置正确，是 x86_64 目标"
+    else
+      echo "❌ 配置错误，不是 x86_64 目标"
+      echo "当前配置:"
+      grep "^CONFIG_TARGET" .config
+      exit 1
+    fi
+    
     - name: 开始编译固件
       id: compile
       run: |
