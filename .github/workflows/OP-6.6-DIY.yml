@@ -131,9 +131,9 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-        # --- 添加以下新步骤 ---
-    - name: 重新安装 LuCI 相关包
-    run: |
+# 注意：下面这个步骤的缩进，- name: 前面应该是 4 个空格
+- name: 重新安装 LuCI 相关包
+  run: |
     cd openwrt
     # 尝试安装 luci-base 和其他可能包含构建工具的包
     ./scripts/feeds install -a -p luci
@@ -142,7 +142,6 @@ jobs:
     # 检查 po2lmo 是否可用 (在 host 编译环境中)
     which po2lmo || echo "WARNING: po2lmo not found in PATH"
     ls -la staging_dir/host/bin/po2lmo* || echo "INFO: No po2lmo in host staging dir yet"
-    # --- 新步骤结束 ---
 
     # 添加验证步骤，注意缩进与 'steps' 对齐
     - name: 验证配置文件
