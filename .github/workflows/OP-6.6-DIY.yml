@@ -26,10 +26,10 @@ env:
   CONFIG_FILE: Mini/DIYFULL.config
   DIY_P1_SH: OP66a.sh
   DIY_P2_SH: DIY2.sh
-  SSH_ACTIONS: false
-  UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  SSH_ACTIONS: "false"  # 改为字符串
+  UPLOAD_BIN_DIR: "true"  # 建议也改为字符串
+  UPLOAD_FIRMWARE: "true"
+  UPLOAD_RELEASE: "true"
   TZ: Asia/Shanghai
 
 jobs:
