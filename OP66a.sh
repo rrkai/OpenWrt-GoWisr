@@ -39,7 +39,6 @@ git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/rrkai/luci-app-eqosplus package/luci-app-eqosplus
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 # svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
 # svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
