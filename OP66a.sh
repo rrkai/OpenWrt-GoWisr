@@ -37,7 +37,6 @@ git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/rrkai/luci-app-eqosplus package/luci-app-eqosplus
-git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
