@@ -26,10 +26,10 @@ env:
   CONFIG_FILE: Mini/DIYFULL.config
   DIY_P1_SH: OP66a.sh
   DIY_P2_SH: DIY2.sh
-  SSH_ACTIONS: "false"  # 改为字符串
-  UPLOAD_BIN_DIR: "true"  # 建议也改为字符串
-  UPLOAD_FIRMWARE: "true"
-  UPLOAD_RELEASE: "true"
+  SSH_ACTIONS: false
+  UPLOAD_BIN_DIR: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -131,6 +131,26 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
+    # 添加验证步骤，注意缩进与 'steps' 对齐
+    - name: 验证配置文件
+      run: |
+        cd openwrt
+        echo "=== 当前配置文件内容 ==="
+        cat .config | grep CONFIG_TARGET
+        echo "=== 配置文件检查完成 ==="
+        
+    - name: 检查目标配置是否正确
+      run: |
+        cd openwrt
+        if grep -q "CONFIG_TARGET_x86_64=y" .config && grep -q "CONFIG_TARGET_x86_64_DEVICE_generic=y" .config; then
+          echo "✅ 配置正确，是 x86_64 目标"
+        else
+          echo "❌ 配置错误，不是 x86_64 目标"
+          echo "当前配置:"
+          grep "^CONFIG_TARGET" .config
+          exit 1
+        fi
+
     - name: 下载安装包
       id: package
       run: |
@@ -139,25 +159,6 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
-        - name: 验证配置文件
-  run: |
-    cd openwrt
-    echo "=== 当前配置文件内容 ==="
-    cat .config | grep CONFIG_TARGET
-    echo "=== 配置文件检查完成 ==="
-    
-- name: 检查目标配置是否正确
-  run: |
-    cd openwrt
-    if grep -q "CONFIG_TARGET_x86_64=y" .config && grep -q "CONFIG_TARGET_x86_64_DEVICE_generic=y" .config; then
-      echo "✅ 配置正确，是 x86_64 目标"
-    else
-      echo "❌ 配置错误，不是 x86_64 目标"
-      echo "当前配置:"
-      grep "^CONFIG_TARGET" .config
-      exit 1
-    fi
     
     - name: 开始编译固件
       id: compile
