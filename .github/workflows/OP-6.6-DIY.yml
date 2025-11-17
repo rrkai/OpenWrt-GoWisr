@@ -20,17 +20,17 @@ on:
 #    - cron: 0 04 */31 * *
         
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Mini/DIYFULL.config
-  DIY_P1_SH: OP66a.sh
-  DIY_P2_SH: DIY2.sh
-  SSH_ACTIONS: false
-  UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
-  TZ: Asia/Shanghai
+  REPO_URL: "https://github.com/coolsnowwolf/lede"  # 添加引号
+  REPO_BRANCH: "master"                             # 添加引号
+  FEEDS_CONF: "feeds.conf.default"                  # 添加引号
+  CONFIG_FILE: "Mini/DIYFULL.config"                # 添加引号
+  DIY_P1_SH: "OP66a.sh"                            # 添加引号
+  DIY_P2_SH: "DIY2.sh"                             # 添加引号
+  SSH_ACTIONS: "false"                              # 关键：必须加引号
+  UPLOAD_BIN_DIR: "true"                            # 添加引号
+  UPLOAD_FIRMWARE: "true"                           # 添加引号
+  UPLOAD_RELEASE: "true"                            # 添加引号
+  TZ: "Asia/Shanghai"                               # 添加引号
 
 jobs:
   build:
