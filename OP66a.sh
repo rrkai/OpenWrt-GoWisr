@@ -6,7 +6,6 @@ sed -i '/openwrt-24.10/d' feeds.conf.default
 # 只取消注释非 luci 相关的行，或者先删除重复的 luci 源再取消注释
 # 避免重复 luci 源：先删除所有 luci 相关行（如果有的话），然后取消注释
 sed -i '/luci/d' feeds.conf.default
-sed -i 's/^#\(.*luci\)/\1/' feeds.conf.default
 
 function merge_package(){
     repo=`echo $1 | rev | cut -d'/' -f 1 | rev`
