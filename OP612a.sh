@@ -56,4 +56,10 @@ git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/linkease/nas-packages-luci.git package/nas-packages-luci
 git clone https://github.com/linkease/nas-packages.git package/nas-packages
 git clone https://github.com/linkease/istore.git package/istore
+git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
+git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
+git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
+git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # sed -i 's/luci-lib-ipkg/luci-base/g' package/istore/luci/luci-app-store/Makefile
