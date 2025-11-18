@@ -123,19 +123,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    # --- 修复后的步骤：重新安装 LuCI 相关包 ---
-    # 注意：这个步骤现在正确地缩进，与其它 - name: 对齐
-    - name: 重新安装 LuCI 相关包
-      run: |
-        cd openwrt
-        # 尝试安装 luci-base 和其他可能包含构建工具的包
-        ./scripts/feeds install -a -p luci
-        # 确保所有包都已安装
-        ./scripts/feeds install -a
-        # 检查 po2lmo 是否可用 (在 host 编译环境中)
-        which po2lmo || echo "WARNING: po2lmo not found in PATH"
-        ls -la staging_dir/host/bin/po2lmo* || echo "INFO: No po2lmo in host staging dir yet"
-
     # --- 修复后的步骤：验证配置文件 ---
     # 注意：这个步骤现在是独立的，与其它 - name: 对齐
     - name: 验证配置文件
@@ -159,16 +146,28 @@ jobs:
           exit 1
         fi
 
-    # --- 修复后的步骤：下载安装包 ---
-    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
-    - name: 下载安装包
-      id: package
-      run: |
-        cd openwrt
-        make defconfig
-        make download -j8
-        find dl -size -1024c -exec ls -l {} \;
-        find dl -size -1024c -exec rm -f {} \;
+- name: 下载安装包并检查配置
+  id: package
+  run: |
+    cd openwrt
+    echo "=== make defconfig 之前，检查当前 .config ==="
+    cat .config | grep "^CONFIG_TARGET" || echo "未找到任何 CONFIG_TARGET 行"
+    echo "=== 执行 make defconfig ==="
+    make defconfig
+    echo "=== make defconfig 之后，检查生成的配置 ==="
+    # 检查 .config 中的最终配置
+    grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/'
+    # 检查是否生成了 .configured 标记 (通常在 make defconfig 成功后创建)
+    if [ -f ".configured" ]; then
+        echo "✅ .configured 文件存在"
+    else
+        echo "❌ .configured 文件不存在，make defconfig 可能失败"
+        exit 1
+    fi
+    echo "=== 开始下载依赖包 ==="
+    make download -j8
+    find dl -size -1024c -exec ls -l {} \;
+    find dl -size -1024c -exec rm -f {} \;
         
     # --- 后续步骤保持缩进正确 ---
     - name: 开始编译固件
