@@ -124,7 +124,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     # --- 修复后的步骤：验证配置文件 ---
-    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
+    # 注意：这个步骤现在是独立的，与其它 - name: 对齐 (4 个空格)
     - name: 验证配置文件
       run: |
         cd openwrt
@@ -133,7 +133,7 @@ jobs:
         echo "=== 配置文件检查完成 ==="
         
     # --- 修复后的步骤：检查目标配置是否正确 ---
-    # 注意：这个步骤现在是独立的，与其它 - name: 对齐
+    # 注意：这个步骤现在是独立的，与其它 - name: 对齐 (4 个空格)
     - name: 检查目标配置是否正确
       run: |
         cd openwrt
@@ -146,30 +146,33 @@ jobs:
           exit 1
         fi
 
-- name: 下载安装包并检查配置
-  id: package
-  run: |
-    cd openwrt
-    echo "=== make defconfig 之前，检查当前 .config ==="
-    cat .config | grep "^CONFIG_TARGET" || echo "未找到任何 CONFIG_TARGET 行"
-    echo "=== 执行 make defconfig ==="
-    make defconfig
-    echo "=== make defconfig 之后，检查生成的配置 ==="
-    # 检查 .config 中的最终配置
-    grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/'
-    # 检查是否生成了 .configured 标记 (通常在 make defconfig 成功后创建)
-    if [ -f ".configured" ]; then
-        echo "✅ .configured 文件存在"
-    else
-        echo "❌ .configured 文件不存在，make defconfig 可能失败"
-        exit 1
-    fi
-    echo "=== 开始下载依赖包 ==="
-    make download -j8
-    find dl -size -1024c -exec ls -l {} \;
-    find dl -size -1024c -exec rm -f {} \;
+    # --- 修复后的步骤：下载安装包并检查配置 ---
+    # 注意：这个步骤现在正确地缩进，与其它 - name: 对齐 (4 个空格)
+    - name: 下载安装包并检查配置
+      id: package
+      run: |
+        cd openwrt
+        echo "=== make defconfig 之前，检查当前 .config ==="
+        cat .config | grep "^CONFIG_TARGET" || echo "未找到任何 CONFIG_TARGET 行"
+        echo "=== 执行 make defconfig ==="
+        make defconfig
+        echo "=== make defconfig 之后，检查生成的配置 ==="
+        # 检查 .config 中的最终配置
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/'
+        # 检查是否生成了 .configured 标记 (通常在 make defconfig 成功后创建)
+        if [ -f ".configured" ]; then
+            echo "✅ .configured 文件存在"
+        else
+            echo "❌ .configured 文件不存在，make defconfig 可能失败"
+            exit 1
+        fi
+        echo "=== 开始下载依赖包 ==="
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
         
-    # --- 后续步骤保持缩进正确 ---
+    # --- 后续步骤也修正缩进 ---
+    # 注意：这些步骤现在也正确地缩进，与其它 - name: 对齐 (4 个空格)
     - name: 开始编译固件
       id: compile
       run: |
