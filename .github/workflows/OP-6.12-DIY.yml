@@ -153,48 +153,44 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_2305${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OpenWrt-6.12${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
 
-    - name: 上传固件到WT网盘
-      id: wetransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/Mikubill/transfer/master/install.sh | sh
-        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
-        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
-    
-    - name: 发布至release
-      id: release
-      uses: ncipollo/release-action@v1.14.0
+    - name: 创建release标签
+      id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
+        touch release.txt
+        echo "🌾🌾🌾 固件信息 基于MINI版本的个人定制版 🌾🌾🌾" >> release.txt
+        echo "- 💻 平台架构: x86-64" >> release.txt
+        echo "- ⚽ 固件源码: https://github.com/coolsnowwolf/lede" >> release.txt
+        echo "- 💝 源码分支: master" >> release.txt
+        echo "- 🚀 内核版本: 6.12 (LTS长期稳定内核)" >> release.txt
+        echo "- 🌐 默认地址: 192.168.1.1  (默认Argon主题)" >> release.txt
+        echo "- 🔑 默认密码: password" >> release.txt
+        echo "- 🍻 分区大小: 456MB(同分区大小可直接升级)" >> release.txt
+        echo "- 💢 去除:IPV6(彻底删除需安装后删除kmod-ip6tables),Docker,OpenClash,HelloWorld,EQOS网速控制" >> release.txt
+        echo "- 🈶 包含:TTYD,Passwall,全能推送,WatchCat,网络唤醒,动态DNS,UPnP,TurboACC网络加速(FLOW),带宽监控,定时重启,文件传输,磁盘管理" >> release.txt
+        echo "status=success" >> $GITHUB_OUTPUT
+        
+    - name: 发布至release
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 openwrt-2410-X86-64 」
-        allowUpdates: true
-        tag: ${{ env.TAG_TIME }}
-        commit: main
-        token: ${{ secrets.RELEASE_TOKEN }}
-        body: |
-          功能介绍：该版本luci为2305，内核版本6.12，目前包含passwall、mosdns、Docker、lucky、微信推送等基础插件，其他功能可以用docker来实现，满足普通用户使用了。
-          [固件源码](https://github.com/coolsnowwolf/lede)
-          由衷感谢所有为openwrt无私奉献的大佬们
-          📥 固件下载
-        artifacts: ${{ env.FIRMWARE }}/*
+        name: ${{ env.FILE_TIME }} 「 🌾OP-6.6-DIY-X86-64 」
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/* 
 
     - name: 清理旧的workflow
-      uses: Mattraks/delete-workflow-runs@main
+      uses: FunctionXJB/delete-workflow-runs@main
       with:
-        token: ${{ secrets.RELEASE_TOKEN }}
-        retain_days: 180
+        retain_days: 60
         keep_minimum_runs: 10
 
-    - name: 删除旧的Releases
-      uses: dev-drprasad/delete-older-releases@master
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 9
-        delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
