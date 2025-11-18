@@ -15,7 +15,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Mini/DIY12.config
+  CONFIG_FILE: Mini/DIYFULL.config
   DIY_P1_SH: OP612a.sh
   DIY_P2_SH: DIY2.sh
   SSH_ACTIONS: false
