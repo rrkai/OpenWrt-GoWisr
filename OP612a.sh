@@ -10,7 +10,7 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.12/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=6.12/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 # sed -i '/luci/d' feeds.conf.default
 # echo 'src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05' >>feeds.conf.default
@@ -34,8 +34,9 @@ rm -rf package/custom; mkdir package/custom
 # git clone https://github.com/fw876/helloworld.git package/ssr
 git clone https://github.com/firker/diy-ziyong -b 2305 package/diy-ziyong
 # merge_package https://github.com/firker/diy-ziyong diy-ziyong/wrtbwmon
-git clone https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon-18.06
+# git clone https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon
+# git clone https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
 # git clone -b js https://github.com/sirpdboy/luci-theme-kucat.git  package/luci-theme-kucat
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/openwrt-nikki
 git clone https://github.com/timsaya/openwrt-bandix  package/openwrt-bandix 
