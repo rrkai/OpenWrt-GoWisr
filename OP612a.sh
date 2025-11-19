@@ -12,7 +12,6 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 sed -i 's/KERNEL_PATCHVER:=6.12/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.6/g' ./target/linux/x86/Makefile
-sed -i '/openwrt-23.05/d' feeds.conf.default
 # sed -i '/luci/d' feeds.conf.default
 # echo 'src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05' >>feeds.conf.default
 # sed -i '2i src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05' feeds.conf.default
