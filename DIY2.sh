@@ -15,6 +15,7 @@ sed -i "s/hostname='LEDE'/hostname='OpenWrt-Go'/g" ./package/base-files/files/bi
 sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 # 修改本地时间格式
 sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
+rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./package/lean/luci-app-qbittorrent
 rm -rf ./target/linux/generic/pending-5.10/701-net-ethernet-mtk_eth_soc-add-ipv6-flow-offloading-support.patch
