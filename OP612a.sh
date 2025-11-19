@@ -43,7 +43,7 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lu
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/openwrt-nikki
 git clone https://github.com/timsaya/openwrt-bandix  package/openwrt-bandix 
 git clone https://github.com/timsaya/luci-app-bandix  package/luci-app-bandix 
-git clone https://github.com/sirpdboy/luci-app-netspeedtest  package/luci-app-netspeedtest
+# git clone https://github.com/sirpdboy/luci-app-netspeedtest  package/luci-app-netspeedtest
 # git clone https://github.com/Thaolga/luci-app-nekoclash  package/luci-app-nekoclash
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
@@ -51,18 +51,18 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
 git clone https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # git clone -b luci-smartdns-new-version https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
-git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
+# git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-serverchan
+# git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 chmod 755 ./package/lucky/luci-app-lucky/root/usr/bin/luckyarch
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/linkease/nas-packages-luci.git package/nas-packages-luci
 git clone https://github.com/linkease/nas-packages.git package/nas-packages
-git clone https://github.com/linkease/istore.git package/istore
+# git clone https://github.com/linkease/istore.git package/istore
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
-git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
+# git clone https://github.com/rrkai/luci-app-vssr.git package/luci-app-vssr
 git clone https://github.com/kenzok78/luci-app-fileassistant.git package/luci-app-fileassistant
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
-git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+# git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 # sed -i 's/luci-lib-ipkg/luci-base/g' package/istore/luci/luci-app-store/Makefile
